@@ -5,7 +5,7 @@ alias_name="$2"
 
 save() {
   local name="$1"
-  echo "$name,$PWD" >> "$HOME/.wd/wd.conf"
+  echo "$name,$PWD" >> $HOME/.wd/wd.conf
 }
 
 delete() {
@@ -18,4 +18,13 @@ update() {
   echo "updating alias $name"
 }
 
-$command $alias_name 
+IFS=","
+read -ra newarr <<< "$(cat $HOME/.wd/wd.conf | grep $command)"
+directory="${newarr[1]}"
+
+if [[ $directory ]]
+then
+  cd $directory
+else
+  $command $alias_name
+fi
