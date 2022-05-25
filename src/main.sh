@@ -22,7 +22,7 @@ IFS=","
 read -ra newarr <<< "$(cat $HOME/.wd/wd.conf | grep $command)"
 directory="${newarr[1]}"
 
-if [[ $directory ]]
+if [[ $directory && ! $alias_name ]]
 then
   cd $directory
 else
