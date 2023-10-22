@@ -20,5 +20,5 @@ cp ./main.sh $dir/wd.sh
 echo "making main script executable"
 chmod +x $dir/wd.sh
 
-echo "alias wd=. $dir/wd.sh" >> $HOME/.bashrc
+echo "alias wd='. $dir/wd.sh'" >> $HOME/.bashrc
 source $HOME/.bashrc
